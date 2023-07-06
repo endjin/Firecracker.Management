@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="$(EndjinProjectPropsPath)" Condition="$(EndjinProjectPropsPath) != ''" />
+
+  <PropertyGroup>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <RestoreLockedMode Condition="$(ContinuousIntegrationBuild) == 'true'">true</RestoreLockedMode>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageDescription>A .NET SDK for the Firecracker Management HTTP API</PackageDescription>
+    <PackageTags>Firecracker, microvm</PackageTags>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <Copyright>Copyright (c) Endjin Limited 2023. All rights reserved.</Copyright>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="NuGet.Readme.md" Pack="true" PackagePath="\readme.md"/>
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;SA1629;SA1201;SA1134;SA1514;SA1615;SA1600;SA1602;CS1591;SA1128;SA1128;SA1611;SA1633;SA1612;SA1117;SA1116;SA1623;</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;SA1629;SA1201;SA1134;SA1514;SA1615;SA1600;SA1602;CS1591;SA1128;SA1128;SA1611;SA1633;SA1612;SA1117;SA1116;SA1623;</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Endjin.RecommendedPractices.GitHub" Version="2.1.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Kiota.Abstractions" Version="1.2.1" />
+    <PackageReference Include="Microsoft.Kiota.Http.HttpClientLibrary" Version="1.0.5" />
+    <PackageReference Include="Microsoft.Kiota.Serialization.Form" Version="1.0.1" />
+    <PackageReference Include="Microsoft.Kiota.Serialization.Json" Version="1.0.7" />
+    <PackageReference Include="Microsoft.Kiota.Serialization.Text" Version="1.0.1" />
+  </ItemGroup>
+
+</Project>

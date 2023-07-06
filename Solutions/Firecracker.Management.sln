@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.001.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Firecracker.Management", "Firecracker.Management\Firecracker.Management.csproj", "{EFA094C3-D428-4E98-BA9A-887561D13EBD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EFA094C3-D428-4E98-BA9A-887561D13EBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFA094C3-D428-4E98-BA9A-887561D13EBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFA094C3-D428-4E98-BA9A-887561D13EBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFA094C3-D428-4E98-BA9A-887561D13EBD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1A5780FF-CBF7-4534-A154-536937B3695C}
+	EndGlobalSection
+EndGlobal
