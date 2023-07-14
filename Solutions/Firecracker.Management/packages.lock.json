@@ -24,11 +24,11 @@
       },
       "Microsoft.Kiota.Http.HttpClientLibrary": {
         "type": "Direct",
-        "requested": "[1.0.5, )",
-        "resolved": "1.0.5",
-        "contentHash": "XCq8c6zhfVEulR8CtWUJ13Fzc5Q+VItMLUKInZbd6iCbgnyzl8QcaEVmqJ0l8Srujx5TZxQv3laqo1bzPDK+gQ==",
+        "requested": "[1.0.6, )",
+        "resolved": "1.0.6",
+        "contentHash": "iWfcrXSROJcab4q5qRTcn1f5O5UDZQd1CRwFyOXiVaxk2/kMvSmWYM3Xjuv4cMcYTvM55dbmA1YWXlntW88m2w==",
         "dependencies": {
-          "Microsoft.Kiota.Abstractions": "1.1.4",
+          "Microsoft.Kiota.Abstractions": "1.2.1",
           "System.Diagnostics.DiagnosticSource": "[6.0.0, 8.0.0)",
           "System.Text.Json": "[6.0.0, 8.0.0)"
         }
@@ -44,21 +44,36 @@
       },
       "Microsoft.Kiota.Serialization.Json": {
         "type": "Direct",
-        "requested": "[1.0.7, )",
-        "resolved": "1.0.7",
-        "contentHash": "cRQmi+m6///aWhVqqEDAPzMrHtU7xfQ0i9ZGtNldT5M+n2dqZGU1dwBIwaNqjHe6PxsXgj1Ahwkgtl3ZE07rBw==",
+        "requested": "[1.0.8, )",
+        "resolved": "1.0.8",
+        "contentHash": "Y41gvO5rQEeKqERCVNHjbySngzx12cxaIRq5aO/IvDkvqL81dwmszyD/4eDqyU7diA8kRZNljJgWFcPWYxQj+w==",
         "dependencies": {
-          "Microsoft.Kiota.Abstractions": "1.2.0",
+          "Microsoft.Kiota.Abstractions": "1.2.1",
           "System.Text.Json": "[6.0.0, 8.0.0)"
         }
       },
       "Microsoft.Kiota.Serialization.Text": {
         "type": "Direct",
-        "requested": "[1.0.1, )",
-        "resolved": "1.0.1",
-        "contentHash": "OPUqUAlvbjdiiVbj8nZXA+kfKfudgPk85wa+cOP25Mxni7m5+bJY/icQpsxyYfsbqgZgwlZuvwj+NH9kWCjNMA==",
+        "requested": "[1.0.3, )",
+        "resolved": "1.0.3",
+        "contentHash": "R2dXH/9QWQ7Zn9Br0aeYzkO4WV2I14qs5azeKmxO8AW7S1j6TYiRFLWAXh1WdcVTi4dVwieEWaEfhQsFnRbbrA==",
         "dependencies": {
-          "Microsoft.Kiota.Abstractions": "1.0.1"
+          "Microsoft.Kiota.Abstractions": "1.2.1"
+        }
+      },
+      "Roslynator.Analyzers": {
+        "type": "Direct",
+        "requested": "[4.3.0, )",
+        "resolved": "4.3.0",
+        "contentHash": "NZNaV9DAYGHKZ753WfhtBj8eoP40LLJsA6JQXdzhF87iTZAdbKCgp32mI3cnQF4TMXz7bk+CgzF/kDG+m+9bCg=="
+      },
+      "StyleCop.Analyzers": {
+        "type": "Direct",
+        "requested": "[1.2.0-beta.435, )",
+        "resolved": "1.2.0-beta.435",
+        "contentHash": "TADk7vdGXtfTnYCV7GyleaaRTQjfoSfZXprQrVMm7cSJtJbFc1QIbWPyLvrgrfGdfHbGmUPvaN4ODKNxg2jgPQ==",
+        "dependencies": {
+          "StyleCop.Analyzers.Unstable": "1.2.0.435"
         }
       },
       "Endjin.RecommendedPractices": {
@@ -87,6 +102,11 @@
           "Microsoft.Build.Tasks.Git": "1.1.1",
           "Microsoft.SourceLink.Common": "1.1.1"
         }
+      },
+      "StyleCop.Analyzers.Unstable": {
+        "type": "Transitive",
+        "resolved": "1.2.0.435",
+        "contentHash": "ouwPWZxbOV3SmCZxIRqHvljkSzkCyi1tDoMzQtDb/bRP8ctASV/iRJr+A2Gdj0QLaLmWnqTWDrH82/iP+X80Lg=="
       },
       "System.Diagnostics.DiagnosticSource": {
         "type": "Transitive",
