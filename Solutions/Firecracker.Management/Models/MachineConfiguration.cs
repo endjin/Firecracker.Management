@@ -26,7 +26,7 @@ namespace Firecracker.Management.Models {
         /// </summary>
         public MachineConfiguration() {
             AdditionalData = new Dictionary<string, object>();
-            CpuTemplate = CpuTemplate.None;
+            CpuTemplate = Firecracker.Management.Models.CpuTemplate.None;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
