@@ -11,7 +11,7 @@ namespace Firecracker.Management.Models {
     public class MachineConfiguration : IAdditionalDataHolder, IParsable {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The CPU Template defines a set of flags to be disabled from the microvm so that the features exposed to the guest are the same as in the selected instance type.</summary>
+        /// <summary>The CPU Template defines a set of flags to be disabled from the microvm so that the features exposed to the guest are the same as in the selected instance type. This parameter has been deprecated and it will be removed in future Firecracker release.</summary>
         public Firecracker.Management.Models.CpuTemplate? CpuTemplate { get; set; }
         /// <summary>Memory size of VM</summary>
         public int? MemSizeMib { get; set; }
@@ -39,7 +39,7 @@ namespace Firecracker.Management.Models {
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
-        public IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
             return new Dictionary<string, Action<IParseNode>> {
                 {"cpu_template", n => { CpuTemplate = n.GetEnumValue<CpuTemplate>(); } },
                 {"mem_size_mib", n => { MemSizeMib = n.GetIntValue(); } },
@@ -52,7 +52,7 @@ namespace Firecracker.Management.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer) {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<CpuTemplate>("cpu_template", CpuTemplate);
             writer.WriteIntValue("mem_size_mib", MemSizeMib);

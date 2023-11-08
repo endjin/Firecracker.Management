@@ -40,7 +40,11 @@ namespace Firecracker.Management.VersionNamespace {
         public async Task<FirecrackerVersion> GetAsync(Action<VersionRequestBuilderGetRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<FirecrackerVersion>(requestInfo, FirecrackerVersion.CreateFromDiscriminatorValue, default, cancellationToken);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+                {"4XX", Error.CreateFromDiscriminatorValue},
+                {"5XX", Error.CreateFromDiscriminatorValue},
+            };
+            return await RequestAdapter.SendAsync<FirecrackerVersion>(requestInfo, FirecrackerVersion.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Gets the Firecracker version.
@@ -58,13 +62,13 @@ namespace Firecracker.Management.VersionNamespace {
                 UrlTemplate = UrlTemplate,
                 PathParameters = PathParameters,
             };
-            requestInfo.Headers.Add("Accept", "application/json");
             if (requestConfiguration != null) {
                 var requestConfig = new VersionRequestBuilderGetRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
                 requestInfo.AddRequestOptions(requestConfig.Options);
                 requestInfo.AddHeaders(requestConfig.Headers);
             }
+            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>

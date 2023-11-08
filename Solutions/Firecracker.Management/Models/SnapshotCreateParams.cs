@@ -26,14 +26,6 @@ namespace Firecracker.Management.Models {
 #endif
         /// <summary>Type of snapshot to create. It is optional and by default, a full snapshot is created.</summary>
         public SnapshotCreateParams_snapshot_type? SnapshotType { get; set; }
-        /// <summary>The microVM version for which we want to create the snapshot. It is optional and it defaults to the current version.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Version { get; set; }
-#nullable restore
-#else
-        public string Version { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new SnapshotCreateParams and sets the default values.
         /// </summary>
@@ -51,24 +43,22 @@ namespace Firecracker.Management.Models {
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
-        public IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
             return new Dictionary<string, Action<IParseNode>> {
                 {"mem_file_path", n => { MemFilePath = n.GetStringValue(); } },
                 {"snapshot_path", n => { SnapshotPath = n.GetStringValue(); } },
                 {"snapshot_type", n => { SnapshotType = n.GetEnumValue<SnapshotCreateParams_snapshot_type>(); } },
-                {"version", n => { Version = n.GetStringValue(); } },
             };
         }
         /// <summary>
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer) {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("mem_file_path", MemFilePath);
             writer.WriteStringValue("snapshot_path", SnapshotPath);
             writer.WriteEnumValue<SnapshotCreateParams_snapshot_type>("snapshot_type", SnapshotType);
-            writer.WriteStringValue("version", Version);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

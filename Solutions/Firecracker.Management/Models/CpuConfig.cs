@@ -52,7 +52,7 @@ namespace Firecracker.Management.Models {
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
-        public IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
             return new Dictionary<string, Action<IParseNode>> {
                 {"cpuid_modifiers", n => { CpuidModifiers = n.GetObjectValue<CpuConfig_cpuid_modifiers>(CpuConfig_cpuid_modifiers.CreateFromDiscriminatorValue); } },
                 {"msr_modifiers", n => { MsrModifiers = n.GetObjectValue<CpuConfig_msr_modifiers>(CpuConfig_msr_modifiers.CreateFromDiscriminatorValue); } },
@@ -63,7 +63,7 @@ namespace Firecracker.Management.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer) {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<CpuConfig_cpuid_modifiers>("cpuid_modifiers", CpuidModifiers);
             writer.WriteObjectValue<CpuConfig_msr_modifiers>("msr_modifiers", MsrModifiers);

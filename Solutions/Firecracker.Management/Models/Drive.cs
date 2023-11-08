@@ -18,9 +18,9 @@ namespace Firecracker.Management.Models {
 #else
         public string DriveId { get; set; }
 #endif
-        /// <summary>Type of the IO engine used by the device. &quot;Async&quot; is supported on host kernels newer than 5.10.51.</summary>
+        /// <summary>Type of the IO engine used by the device. &quot;Async&quot; is supported on host kernels newer than 5.10.51. This field is optional for virtio-block config and should be omitted for vhost-user-block configuration.</summary>
         public Drive_io_engine? IoEngine { get; set; }
-        /// <summary>The is_read_only property</summary>
+        /// <summary>Is block read only. This field is required for virtio-block config and should be omitted for vhost-user-block configuration.</summary>
         public bool? IsReadOnly { get; set; }
         /// <summary>The is_root_device property</summary>
         public bool? IsRootDevice { get; set; }
@@ -32,7 +32,7 @@ namespace Firecracker.Management.Models {
 #else
         public string Partuuid { get; set; }
 #endif
-        /// <summary>Host level path for the guest drive</summary>
+        /// <summary>Host level path for the guest drive. This field is required for virtio-block config and should be omitted for vhost-user-block configuration.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PathOnHost { get; set; }
@@ -40,13 +40,21 @@ namespace Firecracker.Management.Models {
 #else
         public string PathOnHost { get; set; }
 #endif
-        /// <summary>Defines an IO rate limiter with independent bytes/s and ops/s limits. Limits are defined by configuring each of the _bandwidth_ and _ops_ token buckets.</summary>
+        /// <summary>Defines an IO rate limiter with independent bytes/s and ops/s limits. Limits are defined by configuring each of the _bandwidth_ and _ops_ token buckets. This field is optional for virtio-block config and should be omitted for vhost-user-block configuration.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public Firecracker.Management.Models.RateLimiter? RateLimiter { get; set; }
 #nullable restore
 #else
         public Firecracker.Management.Models.RateLimiter RateLimiter { get; set; }
+#endif
+        /// <summary>Path to the socket of vhost-user-block backend. This field is required for vhost-user-block config should be omitted for virtio-block configuration.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Socket { get; set; }
+#nullable restore
+#else
+        public string Socket { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new Drive and sets the default values.
@@ -67,7 +75,7 @@ namespace Firecracker.Management.Models {
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
-        public IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
             return new Dictionary<string, Action<IParseNode>> {
                 {"cache_type", n => { CacheType = n.GetEnumValue<Drive_cache_type>(); } },
                 {"drive_id", n => { DriveId = n.GetStringValue(); } },
@@ -77,13 +85,14 @@ namespace Firecracker.Management.Models {
                 {"partuuid", n => { Partuuid = n.GetStringValue(); } },
                 {"path_on_host", n => { PathOnHost = n.GetStringValue(); } },
                 {"rate_limiter", n => { RateLimiter = n.GetObjectValue<Firecracker.Management.Models.RateLimiter>(Firecracker.Management.Models.RateLimiter.CreateFromDiscriminatorValue); } },
+                {"socket", n => { Socket = n.GetStringValue(); } },
             };
         }
         /// <summary>
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer) {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<Drive_cache_type>("cache_type", CacheType);
             writer.WriteStringValue("drive_id", DriveId);
@@ -93,6 +102,7 @@ namespace Firecracker.Management.Models {
             writer.WriteStringValue("partuuid", Partuuid);
             writer.WriteStringValue("path_on_host", PathOnHost);
             writer.WriteObjectValue<Firecracker.Management.Models.RateLimiter>("rate_limiter", RateLimiter);
+            writer.WriteStringValue("socket", Socket);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

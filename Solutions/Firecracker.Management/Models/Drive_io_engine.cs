@@ -2,7 +2,7 @@
 using System.Runtime.Serialization;
 using System;
 namespace Firecracker.Management.Models {
-    /// <summary>Type of the IO engine used by the device. &quot;Async&quot; is supported on host kernels newer than 5.10.51.</summary>
+    /// <summary>Type of the IO engine used by the device. &quot;Async&quot; is supported on host kernels newer than 5.10.51. This field is optional for virtio-block config and should be omitted for vhost-user-block configuration.</summary>
     public enum Drive_io_engine {
         [EnumMember(Value = "Sync")]
         Sync,

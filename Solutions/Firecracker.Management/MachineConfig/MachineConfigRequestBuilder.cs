@@ -40,7 +40,11 @@ namespace Firecracker.Management.MachineConfig {
         public async Task<MachineConfiguration> GetAsync(Action<MachineConfigRequestBuilderGetRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<MachineConfiguration>(requestInfo, MachineConfiguration.CreateFromDiscriminatorValue, default, cancellationToken);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+                {"4XX", Error.CreateFromDiscriminatorValue},
+                {"5XX", Error.CreateFromDiscriminatorValue},
+            };
+            return await RequestAdapter.SendAsync<MachineConfiguration>(requestInfo, MachineConfiguration.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Partially updates the Virtual Machine Configuration with the specified input. If any of the parameters has an incorrect value, the whole update fails.
@@ -59,8 +63,10 @@ namespace Firecracker.Management.MachineConfig {
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
                 {"400", Error.CreateFromDiscriminatorValue},
+                {"4XX", Error.CreateFromDiscriminatorValue},
+                {"5XX", Error.CreateFromDiscriminatorValue},
             };
-            await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken);
+            await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Updates the Virtual Machine Configuration with the specified input. Firecracker starts with default values for vCPU count (=1) and memory size (=128 MiB). The vCPU count is restricted to the [1, 32] range. With SMT enabled, the vCPU count is required to be either 1 or an even number in the range. otherwise there are no restrictions regarding the vCPU count. If any of the parameters has an incorrect value, the whole update fails. All parameters that are optional and are not specified are set to their default values (smt = false, track_dirty_pages = false, cpu_template = None).
@@ -79,8 +85,10 @@ namespace Firecracker.Management.MachineConfig {
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
                 {"400", Error.CreateFromDiscriminatorValue},
+                {"4XX", Error.CreateFromDiscriminatorValue},
+                {"5XX", Error.CreateFromDiscriminatorValue},
             };
-            await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken);
+            await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Gets the machine configuration of the VM. When called before the PUT operation, it will return the default values for the vCPU count (=1), memory size (=128 MiB). By default SMT is disabled and there is no CPU Template.
@@ -98,13 +106,13 @@ namespace Firecracker.Management.MachineConfig {
                 UrlTemplate = UrlTemplate,
                 PathParameters = PathParameters,
             };
-            requestInfo.Headers.Add("Accept", "application/json");
             if (requestConfiguration != null) {
                 var requestConfig = new MachineConfigRequestBuilderGetRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
                 requestInfo.AddRequestOptions(requestConfig.Options);
                 requestInfo.AddHeaders(requestConfig.Headers);
             }
+            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>
@@ -125,13 +133,14 @@ namespace Firecracker.Management.MachineConfig {
                 UrlTemplate = UrlTemplate,
                 PathParameters = PathParameters,
             };
-            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             if (requestConfiguration != null) {
                 var requestConfig = new MachineConfigRequestBuilderPatchRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
                 requestInfo.AddRequestOptions(requestConfig.Options);
                 requestInfo.AddHeaders(requestConfig.Headers);
             }
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>
@@ -152,13 +161,14 @@ namespace Firecracker.Management.MachineConfig {
                 UrlTemplate = UrlTemplate,
                 PathParameters = PathParameters,
             };
-            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             if (requestConfiguration != null) {
                 var requestConfig = new MachineConfigRequestBuilderPutRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
                 requestInfo.AddRequestOptions(requestConfig.Options);
                 requestInfo.AddHeaders(requestConfig.Headers);
             }
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>

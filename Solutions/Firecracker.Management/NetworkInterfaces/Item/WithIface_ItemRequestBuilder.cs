@@ -44,8 +44,10 @@ namespace Firecracker.Management.NetworkInterfaces.Item {
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
                 {"400", Error.CreateFromDiscriminatorValue},
+                {"4XX", Error.CreateFromDiscriminatorValue},
+                {"5XX", Error.CreateFromDiscriminatorValue},
             };
-            await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken);
+            await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Creates new network interface with ID specified by iface_id path parameter.
@@ -64,8 +66,10 @@ namespace Firecracker.Management.NetworkInterfaces.Item {
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
                 {"400", Error.CreateFromDiscriminatorValue},
+                {"4XX", Error.CreateFromDiscriminatorValue},
+                {"5XX", Error.CreateFromDiscriminatorValue},
             };
-            await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken);
+            await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Updates the rate limiters applied to a network interface.
@@ -85,13 +89,14 @@ namespace Firecracker.Management.NetworkInterfaces.Item {
                 UrlTemplate = UrlTemplate,
                 PathParameters = PathParameters,
             };
-            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             if (requestConfiguration != null) {
                 var requestConfig = new WithIface_ItemRequestBuilderPatchRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
                 requestInfo.AddRequestOptions(requestConfig.Options);
                 requestInfo.AddHeaders(requestConfig.Headers);
             }
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>
@@ -112,13 +117,14 @@ namespace Firecracker.Management.NetworkInterfaces.Item {
                 UrlTemplate = UrlTemplate,
                 PathParameters = PathParameters,
             };
-            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             if (requestConfiguration != null) {
                 var requestConfig = new WithIface_ItemRequestBuilderPutRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
                 requestInfo.AddRequestOptions(requestConfig.Options);
                 requestInfo.AddHeaders(requestConfig.Headers);
             }
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>

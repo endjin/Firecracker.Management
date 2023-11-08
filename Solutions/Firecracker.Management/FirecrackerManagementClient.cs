@@ -123,7 +123,11 @@ namespace Firecracker.Management {
         public async Task<InstanceInfo> GetAsync(Action<FirecrackerManagementClientGetRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<InstanceInfo>(requestInfo, InstanceInfo.CreateFromDiscriminatorValue, default, cancellationToken);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+                {"4XX", Error.CreateFromDiscriminatorValue},
+                {"5XX", Error.CreateFromDiscriminatorValue},
+            };
+            return await RequestAdapter.SendAsync<InstanceInfo>(requestInfo, InstanceInfo.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns general information about an instance.
@@ -141,13 +145,13 @@ namespace Firecracker.Management {
                 UrlTemplate = UrlTemplate,
                 PathParameters = PathParameters,
             };
-            requestInfo.Headers.Add("Accept", "application/json");
             if (requestConfiguration != null) {
                 var requestConfig = new FirecrackerManagementClientGetRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
                 requestInfo.AddRequestOptions(requestConfig.Options);
                 requestInfo.AddHeaders(requestConfig.Headers);
             }
+            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>

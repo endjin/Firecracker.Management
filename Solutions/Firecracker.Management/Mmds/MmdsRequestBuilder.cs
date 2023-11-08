@@ -39,6 +39,27 @@ namespace Firecracker.Management.Mmds {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+        public async Task<MmdsGetResponse?> GetAsMmdsGetResponseAsync(Action<MmdsRequestBuilderGetRequestConfiguration>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+#nullable restore
+#else
+        public async Task<MmdsGetResponse> GetAsMmdsGetResponseAsync(Action<MmdsRequestBuilderGetRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
+#endif
+            var requestInfo = ToGetRequestInformation(requestConfiguration);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+                {"404", Error.CreateFromDiscriminatorValue},
+                {"4XX", Error.CreateFromDiscriminatorValue},
+                {"5XX", Error.CreateFromDiscriminatorValue},
+            };
+            return await RequestAdapter.SendAsync<MmdsGetResponse>(requestInfo, MmdsGetResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>
+        /// Get the MMDS data store.
+        /// </summary>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        [Obsolete("This method is obsolete. Use GetAsMmdsGetResponse instead.")]
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public async Task<MmdsResponse?> GetAsync(Action<MmdsRequestBuilderGetRequestConfiguration>? requestConfiguration = default, CancellationToken cancellationToken = default) {
 #nullable restore
 #else
@@ -47,8 +68,10 @@ namespace Firecracker.Management.Mmds {
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
                 {"404", Error.CreateFromDiscriminatorValue},
+                {"4XX", Error.CreateFromDiscriminatorValue},
+                {"5XX", Error.CreateFromDiscriminatorValue},
             };
-            return await RequestAdapter.SendAsync<MmdsResponse>(requestInfo, MmdsResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken);
+            return await RequestAdapter.SendAsync<MmdsResponse>(requestInfo, MmdsResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Updates the MMDS data store.
@@ -67,8 +90,10 @@ namespace Firecracker.Management.Mmds {
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
                 {"400", Error.CreateFromDiscriminatorValue},
+                {"4XX", Error.CreateFromDiscriminatorValue},
+                {"5XX", Error.CreateFromDiscriminatorValue},
             };
-            await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken);
+            await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Creates a MMDS (Microvm Metadata Service) data store.
@@ -87,8 +112,10 @@ namespace Firecracker.Management.Mmds {
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
                 {"400", Error.CreateFromDiscriminatorValue},
+                {"4XX", Error.CreateFromDiscriminatorValue},
+                {"5XX", Error.CreateFromDiscriminatorValue},
             };
-            await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken);
+            await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get the MMDS data store.
@@ -106,13 +133,13 @@ namespace Firecracker.Management.Mmds {
                 UrlTemplate = UrlTemplate,
                 PathParameters = PathParameters,
             };
-            requestInfo.Headers.Add("Accept", "application/json");
             if (requestConfiguration != null) {
                 var requestConfig = new MmdsRequestBuilderGetRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
                 requestInfo.AddRequestOptions(requestConfig.Options);
                 requestInfo.AddHeaders(requestConfig.Headers);
             }
+            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>
@@ -133,13 +160,14 @@ namespace Firecracker.Management.Mmds {
                 UrlTemplate = UrlTemplate,
                 PathParameters = PathParameters,
             };
-            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             if (requestConfiguration != null) {
                 var requestConfig = new MmdsRequestBuilderPatchRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
                 requestInfo.AddRequestOptions(requestConfig.Options);
                 requestInfo.AddHeaders(requestConfig.Headers);
             }
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>
@@ -160,13 +188,14 @@ namespace Firecracker.Management.Mmds {
                 UrlTemplate = UrlTemplate,
                 PathParameters = PathParameters,
             };
-            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             if (requestConfiguration != null) {
                 var requestConfig = new MmdsRequestBuilderPutRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
                 requestInfo.AddRequestOptions(requestConfig.Options);
                 requestInfo.AddHeaders(requestConfig.Headers);
             }
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>
