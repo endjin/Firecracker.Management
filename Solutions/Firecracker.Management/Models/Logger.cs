@@ -21,6 +21,14 @@ namespace Firecracker.Management.Models {
 #else
         public string LogPath { get; set; }
 #endif
+        /// <summary>The module path to filter log messages by.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Module { get; set; }
+#nullable restore
+#else
+        public string Module { get; set; }
+#endif
         /// <summary>Whether or not to output the level in the logs.</summary>
         public bool? ShowLevel { get; set; }
         /// <summary>Whether or not to include the file path and line number of the log&apos;s origin.</summary>
@@ -30,7 +38,7 @@ namespace Firecracker.Management.Models {
         /// </summary>
         public Logger() {
             AdditionalData = new Dictionary<string, object>();
-            Level = Logger_level.Warning;
+            Level = Logger_level.Info;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -43,10 +51,11 @@ namespace Firecracker.Management.Models {
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
-        public IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
             return new Dictionary<string, Action<IParseNode>> {
                 {"level", n => { Level = n.GetEnumValue<Logger_level>(); } },
                 {"log_path", n => { LogPath = n.GetStringValue(); } },
+                {"module", n => { Module = n.GetStringValue(); } },
                 {"show_level", n => { ShowLevel = n.GetBoolValue(); } },
                 {"show_log_origin", n => { ShowLogOrigin = n.GetBoolValue(); } },
             };
@@ -55,10 +64,11 @@ namespace Firecracker.Management.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer) {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<Logger_level>("level", Level);
             writer.WriteStringValue("log_path", LogPath);
+            writer.WriteStringValue("module", Module);
             writer.WriteBoolValue("show_level", ShowLevel);
             writer.WriteBoolValue("show_log_origin", ShowLogOrigin);
             writer.WriteAdditionalData(AdditionalData);

@@ -12,5 +12,9 @@ namespace Firecracker.Management.Models {
         Info,
         [EnumMember(Value = "Debug")]
         Debug,
+        [EnumMember(Value = "Trace")]
+        Trace,
+        [EnumMember(Value = "Off")]
+        Off,
     }
 }

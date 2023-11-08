@@ -6,7 +6,7 @@ using System.Linq;
 using System;
 namespace Firecracker.Management.Models {
     /// <summary>
-    /// Defines an IO rate limiter with independent bytes/s and ops/s limits. Limits are defined by configuring each of the _bandwidth_ and _ops_ token buckets.
+    /// Defines an IO rate limiter with independent bytes/s and ops/s limits. Limits are defined by configuring each of the _bandwidth_ and _ops_ token buckets. This field is optional for virtio-block config and should be omitted for vhost-user-block configuration.
     /// </summary>
     public class RateLimiter : IAdditionalDataHolder, IParsable {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -44,7 +44,7 @@ namespace Firecracker.Management.Models {
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
-        public IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
             return new Dictionary<string, Action<IParseNode>> {
                 {"bandwidth", n => { Bandwidth = n.GetObjectValue<TokenBucket>(TokenBucket.CreateFromDiscriminatorValue); } },
                 {"ops", n => { Ops = n.GetObjectValue<TokenBucket>(TokenBucket.CreateFromDiscriminatorValue); } },
@@ -54,7 +54,7 @@ namespace Firecracker.Management.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer) {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<TokenBucket>("bandwidth", Bandwidth);
             writer.WriteObjectValue<TokenBucket>("ops", Ops);

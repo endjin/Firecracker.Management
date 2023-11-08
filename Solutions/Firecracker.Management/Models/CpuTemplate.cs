@@ -2,7 +2,7 @@
 using System.Runtime.Serialization;
 using System;
 namespace Firecracker.Management.Models {
-    /// <summary>The CPU Template defines a set of flags to be disabled from the microvm so that the features exposed to the guest are the same as in the selected instance type.</summary>
+    /// <summary>The CPU Template defines a set of flags to be disabled from the microvm so that the features exposed to the guest are the same as in the selected instance type. This parameter has been deprecated and it will be removed in future Firecracker release.</summary>
     public enum CpuTemplate {
         [EnumMember(Value = "C3")]
         C3,
