@@ -11,6 +11,24 @@ A .NET SDK for accessing the Firecracker Management HTTP API, based on the offic
 
 ## Getting Started
 
+Install Kiota as a Global Tool:
+
+```
+dotnet tool install --global Microsoft.OpenApi.Kiota
+```
+
+Or Upgrade your existing version to the latest:
+
+```
+dotnet tool update --global Microsoft.OpenApi.Kiota
+```
+
+Use Kiota to generate the client:
+
+```
+kiota generate -l CSharp -c FirecrackerManagementClient -n Firecracker.Management -d https://raw.githubusercontent.com/firecracker-microvm/firecracker/main/src/api_server/swagger/firecracker.yaml -o "c:\temp\firecracker\client"
+```
+
 ## Licenses
 
 This project is available under the Apache 2.0 open source license.

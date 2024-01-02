@@ -16,7 +16,7 @@ namespace Firecracker.Management.Models {
 #else
         public string DriveId { get; set; }
 #endif
-        /// <summary>Host level path for the guest drive</summary>
+        /// <summary>Host level path for the guest drive. This field is optional for virtio-block config and should be omitted for vhost-user-block configuration.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PathOnHost { get; set; }
