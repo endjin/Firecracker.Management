@@ -32,72 +32,89 @@ namespace Firecracker.Management {
     /// <summary>
     /// The main entry point of the SDK, exposes the configuration and the fluent API.
     /// </summary>
-    public class FirecrackerManagementClient : BaseRequestBuilder {
+    public class FirecrackerManagementClient : BaseRequestBuilder 
+    {
         /// <summary>The actions property</summary>
-        public ActionsRequestBuilder Actions { get =>
-            new ActionsRequestBuilder(PathParameters, RequestAdapter);
+        public ActionsRequestBuilder Actions
+        {
+            get => new ActionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The balloon property</summary>
-        public BalloonRequestBuilder Balloon { get =>
-            new BalloonRequestBuilder(PathParameters, RequestAdapter);
+        public BalloonRequestBuilder Balloon
+        {
+            get => new BalloonRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The bootSource property</summary>
-        public BootSourceRequestBuilder BootSource { get =>
-            new BootSourceRequestBuilder(PathParameters, RequestAdapter);
+        public BootSourceRequestBuilder BootSource
+        {
+            get => new BootSourceRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The cpuConfig property</summary>
-        public CpuConfigRequestBuilder CpuConfig { get =>
-            new CpuConfigRequestBuilder(PathParameters, RequestAdapter);
+        public CpuConfigRequestBuilder CpuConfig
+        {
+            get => new CpuConfigRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The drives property</summary>
-        public DrivesRequestBuilder Drives { get =>
-            new DrivesRequestBuilder(PathParameters, RequestAdapter);
+        public DrivesRequestBuilder Drives
+        {
+            get => new DrivesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The entropy property</summary>
-        public EntropyRequestBuilder Entropy { get =>
-            new EntropyRequestBuilder(PathParameters, RequestAdapter);
+        public EntropyRequestBuilder Entropy
+        {
+            get => new EntropyRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The logger property</summary>
-        public LoggerRequestBuilder Logger { get =>
-            new LoggerRequestBuilder(PathParameters, RequestAdapter);
+        public LoggerRequestBuilder Logger
+        {
+            get => new LoggerRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The machineConfig property</summary>
-        public MachineConfigRequestBuilder MachineConfig { get =>
-            new MachineConfigRequestBuilder(PathParameters, RequestAdapter);
+        public MachineConfigRequestBuilder MachineConfig
+        {
+            get => new MachineConfigRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The metrics property</summary>
-        public MetricsRequestBuilder Metrics { get =>
-            new MetricsRequestBuilder(PathParameters, RequestAdapter);
+        public MetricsRequestBuilder Metrics
+        {
+            get => new MetricsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The mmds property</summary>
-        public MmdsRequestBuilder Mmds { get =>
-            new MmdsRequestBuilder(PathParameters, RequestAdapter);
+        public MmdsRequestBuilder Mmds
+        {
+            get => new MmdsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The networkInterfaces property</summary>
-        public NetworkInterfacesRequestBuilder NetworkInterfaces { get =>
-            new NetworkInterfacesRequestBuilder(PathParameters, RequestAdapter);
+        public NetworkInterfacesRequestBuilder NetworkInterfaces
+        {
+            get => new NetworkInterfacesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The snapshot property</summary>
-        public SnapshotRequestBuilder Snapshot { get =>
-            new SnapshotRequestBuilder(PathParameters, RequestAdapter);
+        public SnapshotRequestBuilder Snapshot
+        {
+            get => new SnapshotRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The version property</summary>
-        public VersionRequestBuilder Version { get =>
-            new VersionRequestBuilder(PathParameters, RequestAdapter);
+        public VersionRequestBuilder Version
+        {
+            get => new VersionRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The vm property</summary>
-        public VmRequestBuilder Vm { get =>
-            new VmRequestBuilder(PathParameters, RequestAdapter);
+        public VmRequestBuilder Vm
+        {
+            get => new VmRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The vsock property</summary>
-        public VsockRequestBuilder Vsock { get =>
-            new VsockRequestBuilder(PathParameters, RequestAdapter);
+        public VsockRequestBuilder Vsock
+        {
+            get => new VsockRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new FirecrackerManagementClient and sets the default values.
+        /// Instantiates a new <see cref="FirecrackerManagementClient"/> and sets the default values.
         /// </summary>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public FirecrackerManagementClient(IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}", new Dictionary<string, object>()) {
+        public FirecrackerManagementClient(IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}", new Dictionary<string, object>())
+        {
             ApiClientBuilder.RegisterDefaultSerializer<JsonSerializationWriterFactory>();
             ApiClientBuilder.RegisterDefaultSerializer<TextSerializationWriterFactory>();
             ApiClientBuilder.RegisterDefaultSerializer<FormSerializationWriterFactory>();
@@ -105,7 +122,8 @@ namespace Firecracker.Management {
             ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
             ApiClientBuilder.RegisterDefaultDeserializer<TextParseNodeFactory>();
             ApiClientBuilder.RegisterDefaultDeserializer<FormParseNodeFactory>();
-            if (string.IsNullOrEmpty(RequestAdapter.BaseUrl)) {
+            if (string.IsNullOrEmpty(RequestAdapter.BaseUrl))
+            {
                 RequestAdapter.BaseUrl = "http://localhost";
             }
             PathParameters.TryAdd("baseurl", RequestAdapter.BaseUrl);
@@ -113,32 +131,39 @@ namespace Firecracker.Management {
         /// <summary>
         /// Returns general information about an instance.
         /// </summary>
+        /// <returns>A <see cref="InstanceInfo"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="Error">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<InstanceInfo?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<InstanceInfo?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<InstanceInfo> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<InstanceInfo> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
-                {"4XX", Error.CreateFromDiscriminatorValue},
-                {"5XX", Error.CreateFromDiscriminatorValue},
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                {"XXX", Error.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<InstanceInfo>(requestInfo, InstanceInfo.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns general information about an instance.
         /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -149,7 +174,8 @@ namespace Firecracker.Management {
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class FirecrackerManagementClientGetRequestConfiguration : RequestConfiguration<DefaultQueryParameters> {
+        public class FirecrackerManagementClientGetRequestConfiguration : RequestConfiguration<DefaultQueryParameters> 
+        {
         }
     }
 }

@@ -8,7 +8,8 @@ namespace Firecracker.Management.Models {
     /// <summary>
     /// Describes the Firecracker version.
     /// </summary>
-    public class FirecrackerVersion : IAdditionalDataHolder, IParsable {
+    public class FirecrackerVersion : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Firecracker build version.</summary>
@@ -20,24 +21,30 @@ namespace Firecracker.Management.Models {
         public string FirecrackerVersionProp { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new FirecrackerVersion and sets the default values.
+        /// Instantiates a new <see cref="FirecrackerVersion"/> and sets the default values.
         /// </summary>
-        public FirecrackerVersion() {
+        public FirecrackerVersion()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
+        /// <returns>A <see cref="FirecrackerVersion"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static FirecrackerVersion CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static FirecrackerVersion CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new FirecrackerVersion();
         }
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"firecracker_version", n => { FirecrackerVersionProp = n.GetStringValue(); } },
             };
         }
@@ -45,7 +52,8 @@ namespace Firecracker.Management.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("firecracker_version", FirecrackerVersionProp);
             writer.WriteAdditionalData(AdditionalData);

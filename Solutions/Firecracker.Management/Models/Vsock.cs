@@ -8,7 +8,8 @@ namespace Firecracker.Management.Models {
     /// <summary>
     /// Defines a vsock device, backed by a set of Unix Domain Sockets, on the host side. For host-initiated connections, Firecracker will be listening on the Unix socket identified by the path `uds_path`. Firecracker will create this socket, bind and listen on it. Host-initiated connections will be performed by connection to this socket and issuing a connection forwarding request to the desired guest-side vsock port (i.e. `CONNECT 52\n`, to connect to port 52). For guest-initiated connections, Firecracker will expect host software to be bound and listening on Unix sockets at `uds_path_&lt;PORT&gt;`. E.g. &quot;/path/to/host_vsock.sock_52&quot; for port number 52.
     /// </summary>
-    public class Vsock : IAdditionalDataHolder, IParsable {
+    public class Vsock : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Guest Vsock CID</summary>
@@ -30,24 +31,30 @@ namespace Firecracker.Management.Models {
         public string VsockId { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new Vsock and sets the default values.
+        /// Instantiates a new <see cref="Vsock"/> and sets the default values.
         /// </summary>
-        public Vsock() {
+        public Vsock()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
+        /// <returns>A <see cref="Vsock"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Vsock CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Vsock CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Vsock();
         }
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"guest_cid", n => { GuestCid = n.GetIntValue(); } },
                 {"uds_path", n => { UdsPath = n.GetStringValue(); } },
                 {"vsock_id", n => { VsockId = n.GetStringValue(); } },
@@ -57,7 +64,8 @@ namespace Firecracker.Management.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("guest_cid", GuestCid);
             writer.WriteStringValue("uds_path", UdsPath);

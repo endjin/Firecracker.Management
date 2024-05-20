@@ -12,20 +12,23 @@ namespace Firecracker.Management.BootSource {
     /// <summary>
     /// Builds and executes requests for operations under \boot-source
     /// </summary>
-    public class BootSourceRequestBuilder : BaseRequestBuilder {
+    public class BootSourceRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>
-        /// Instantiates a new BootSourceRequestBuilder and sets the default values.
+        /// Instantiates a new <see cref="BootSourceRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public BootSourceRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/boot-source", pathParameters) {
+        public BootSourceRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/boot-source", pathParameters)
+        {
         }
         /// <summary>
-        /// Instantiates a new BootSourceRequestBuilder and sets the default values.
+        /// Instantiates a new <see cref="BootSourceRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public BootSourceRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/boot-source", rawUrl) {
+        public BootSourceRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/boot-source", rawUrl)
+        {
         }
         /// <summary>
         /// Creates new boot source if one does not already exist, otherwise updates it. Will fail if update is not possible.
@@ -33,33 +36,40 @@ namespace Firecracker.Management.BootSource {
         /// <param name="body">Boot source descriptor.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="Error">When receiving a 400 status code</exception>
+        /// <exception cref="Error">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task PutAsync(Firecracker.Management.Models.BootSource body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task PutAsync(Firecracker.Management.Models.BootSource body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task PutAsync(Firecracker.Management.Models.BootSource body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task PutAsync(Firecracker.Management.Models.BootSource body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"400", Error.CreateFromDiscriminatorValue},
-                {"4XX", Error.CreateFromDiscriminatorValue},
-                {"5XX", Error.CreateFromDiscriminatorValue},
+                {"XXX", Error.CreateFromDiscriminatorValue},
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Creates new boot source if one does not already exist, otherwise updates it. Will fail if update is not possible.
         /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Boot source descriptor.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(Firecracker.Management.Models.BootSource body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToPutRequestInformation(Firecracker.Management.Models.BootSource body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(Firecracker.Management.Models.BootSource body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToPutRequestInformation(Firecracker.Management.Models.BootSource body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
@@ -71,15 +81,18 @@ namespace Firecracker.Management.BootSource {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
+        /// <returns>A <see cref="BootSourceRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public BootSourceRequestBuilder WithUrl(string rawUrl) {
+        public BootSourceRequestBuilder WithUrl(string rawUrl)
+        {
             return new BootSourceRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class BootSourceRequestBuilderPutRequestConfiguration : RequestConfiguration<DefaultQueryParameters> {
+        public class BootSourceRequestBuilderPutRequestConfiguration : RequestConfiguration<DefaultQueryParameters> 
+        {
         }
     }
 }

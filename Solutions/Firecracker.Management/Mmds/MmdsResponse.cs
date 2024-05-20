@@ -5,13 +5,18 @@ using System.IO;
 using System.Linq;
 using System;
 namespace Firecracker.Management.Mmds {
-    [Obsolete("This class is obsolete. Use mmdsGetResponse instead.")]
-    public class MmdsResponse : MmdsGetResponse, IParsable {
+    [Obsolete("This class is obsolete. Use MmdsGetResponse instead.")]
+    #pragma warning disable CS1591
+    public class MmdsResponse : MmdsGetResponse, IParsable 
+    #pragma warning restore CS1591
+    {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
+        /// <returns>A <see cref="MmdsResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new MmdsResponse CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static new MmdsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new MmdsResponse();
         }

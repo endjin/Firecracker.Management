@@ -10,27 +10,35 @@ namespace Firecracker.Management.NetworkInterfaces {
     /// <summary>
     /// Builds and executes requests for operations under \network-interfaces
     /// </summary>
-    public class NetworkInterfacesRequestBuilder : BaseRequestBuilder {
+    public class NetworkInterfacesRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>Gets an item from the Firecracker.Management.networkInterfaces.item collection</summary>
         /// <param name="position">The id of the guest network interface</param>
-        public WithIface_ItemRequestBuilder this[string position] { get {
-            var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("iface_id", position);
-            return new WithIface_ItemRequestBuilder(urlTplParams, RequestAdapter);
-        } }
+        /// <returns>A <see cref="WithIface_ItemRequestBuilder"/></returns>
+        public WithIface_ItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("iface_id", position);
+                return new WithIface_ItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
-        /// Instantiates a new NetworkInterfacesRequestBuilder and sets the default values.
+        /// Instantiates a new <see cref="NetworkInterfacesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public NetworkInterfacesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/network-interfaces", pathParameters) {
+        public NetworkInterfacesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/network-interfaces", pathParameters)
+        {
         }
         /// <summary>
-        /// Instantiates a new NetworkInterfacesRequestBuilder and sets the default values.
+        /// Instantiates a new <see cref="NetworkInterfacesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public NetworkInterfacesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/network-interfaces", rawUrl) {
+        public NetworkInterfacesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/network-interfaces", rawUrl)
+        {
         }
     }
 }

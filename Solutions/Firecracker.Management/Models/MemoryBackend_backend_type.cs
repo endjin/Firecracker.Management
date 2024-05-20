@@ -2,10 +2,17 @@
 using System.Runtime.Serialization;
 using System;
 namespace Firecracker.Management.Models {
-    public enum MemoryBackend_backend_type {
+    #pragma warning disable CS1591
+    public enum MemoryBackend_backend_type
+    #pragma warning restore CS1591
+    {
         [EnumMember(Value = "File")]
+        #pragma warning disable CS1591
         File,
+        #pragma warning restore CS1591
         [EnumMember(Value = "Uffd")]
+        #pragma warning disable CS1591
         Uffd,
+        #pragma warning restore CS1591
     }
 }
