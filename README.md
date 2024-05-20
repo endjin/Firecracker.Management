@@ -26,7 +26,7 @@ dotnet tool update --global Microsoft.OpenApi.Kiota
 Use Kiota to generate the client:
 
 ```
-kiota generate -l CSharp -c FirecrackerManagementClient -n Firecracker.Management -d https://raw.githubusercontent.com/firecracker-microvm/firecracker/main/src/api_server/swagger/firecracker.yaml -o "c:\temp\firecracker\client"
+kiota generate -l CSharp -c FirecrackerManagementClient -n Firecracker.Management -d https://raw.githubusercontent.com/firecracker-microvm/firecracker/main/src/firecracker/swagger/firecracker.yaml -o "c:\temp\firecracker\client"
 ```
 
 ## Licenses
