@@ -8,7 +8,8 @@ namespace Firecracker.Management.Models {
     /// <summary>
     /// Defines the configuration used for handling snapshot resume. Exactly one of the two `mem_*` fields must be present in the body of the request.
     /// </summary>
-    public class SnapshotLoadParams : IAdditionalDataHolder, IParsable {
+    public class SnapshotLoadParams : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Enable support for incremental (diff) snapshots by tracking dirty guest pages.</summary>
@@ -40,24 +41,30 @@ namespace Firecracker.Management.Models {
         public string SnapshotPath { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new SnapshotLoadParams and sets the default values.
+        /// Instantiates a new <see cref="SnapshotLoadParams"/> and sets the default values.
         /// </summary>
-        public SnapshotLoadParams() {
+        public SnapshotLoadParams()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
+        /// <returns>A <see cref="SnapshotLoadParams"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static SnapshotLoadParams CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static SnapshotLoadParams CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new SnapshotLoadParams();
         }
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"enable_diff_snapshots", n => { EnableDiffSnapshots = n.GetBoolValue(); } },
                 {"mem_backend", n => { MemBackend = n.GetObjectValue<MemoryBackend>(MemoryBackend.CreateFromDiscriminatorValue); } },
                 {"mem_file_path", n => { MemFilePath = n.GetStringValue(); } },
@@ -69,7 +76,8 @@ namespace Firecracker.Management.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("enable_diff_snapshots", EnableDiffSnapshots);
             writer.WriteObjectValue<MemoryBackend>("mem_backend", MemBackend);

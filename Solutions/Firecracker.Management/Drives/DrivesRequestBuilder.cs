@@ -10,27 +10,35 @@ namespace Firecracker.Management.Drives {
     /// <summary>
     /// Builds and executes requests for operations under \drives
     /// </summary>
-    public class DrivesRequestBuilder : BaseRequestBuilder {
+    public class DrivesRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>Gets an item from the Firecracker.Management.drives.item collection</summary>
         /// <param name="position">The id of the guest drive</param>
-        public WithDrive_ItemRequestBuilder this[string position] { get {
-            var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("drive_id", position);
-            return new WithDrive_ItemRequestBuilder(urlTplParams, RequestAdapter);
-        } }
+        /// <returns>A <see cref="WithDrive_ItemRequestBuilder"/></returns>
+        public WithDrive_ItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("drive_id", position);
+                return new WithDrive_ItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
-        /// Instantiates a new DrivesRequestBuilder and sets the default values.
+        /// Instantiates a new <see cref="DrivesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DrivesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/drives", pathParameters) {
+        public DrivesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/drives", pathParameters)
+        {
         }
         /// <summary>
-        /// Instantiates a new DrivesRequestBuilder and sets the default values.
+        /// Instantiates a new <see cref="DrivesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DrivesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/drives", rawUrl) {
+        public DrivesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/drives", rawUrl)
+        {
         }
     }
 }

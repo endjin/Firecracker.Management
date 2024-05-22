@@ -3,12 +3,19 @@ using System.Runtime.Serialization;
 using System;
 namespace Firecracker.Management.Models {
     /// <summary>The current detailed state (Not started, Running, Paused) of the Firecracker instance. This value is read-only for the control-plane.</summary>
-    public enum InstanceInfo_state {
+    public enum InstanceInfo_state
+    {
         [EnumMember(Value = "Not started")]
+        #pragma warning disable CS1591
         NotStarted,
+        #pragma warning restore CS1591
         [EnumMember(Value = "Running")]
+        #pragma warning disable CS1591
         Running,
+        #pragma warning restore CS1591
         [EnumMember(Value = "Paused")]
+        #pragma warning disable CS1591
         Paused,
+        #pragma warning restore CS1591
     }
 }

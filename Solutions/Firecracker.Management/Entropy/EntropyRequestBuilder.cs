@@ -12,20 +12,23 @@ namespace Firecracker.Management.Entropy {
     /// <summary>
     /// Builds and executes requests for operations under \entropy
     /// </summary>
-    public class EntropyRequestBuilder : BaseRequestBuilder {
+    public class EntropyRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>
-        /// Instantiates a new EntropyRequestBuilder and sets the default values.
+        /// Instantiates a new <see cref="EntropyRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EntropyRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/entropy", pathParameters) {
+        public EntropyRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/entropy", pathParameters)
+        {
         }
         /// <summary>
-        /// Instantiates a new EntropyRequestBuilder and sets the default values.
+        /// Instantiates a new <see cref="EntropyRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EntropyRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/entropy", rawUrl) {
+        public EntropyRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/entropy", rawUrl)
+        {
         }
         /// <summary>
         /// Enables an entropy device that provides high-quality random data to the guest.
@@ -33,32 +36,38 @@ namespace Firecracker.Management.Entropy {
         /// <param name="body">Defines an entropy device.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="Error">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task PutAsync(EntropyDevice body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task PutAsync(EntropyDevice body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task PutAsync(EntropyDevice body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task PutAsync(EntropyDevice body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
-                {"4XX", Error.CreateFromDiscriminatorValue},
-                {"5XX", Error.CreateFromDiscriminatorValue},
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                {"XXX", Error.CreateFromDiscriminatorValue},
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Enables an entropy device that provides high-quality random data to the guest.
         /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Defines an entropy device.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(EntropyDevice body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToPutRequestInformation(EntropyDevice body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(EntropyDevice body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToPutRequestInformation(EntropyDevice body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
@@ -70,15 +79,18 @@ namespace Firecracker.Management.Entropy {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
+        /// <returns>A <see cref="EntropyRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public EntropyRequestBuilder WithUrl(string rawUrl) {
+        public EntropyRequestBuilder WithUrl(string rawUrl)
+        {
             return new EntropyRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class EntropyRequestBuilderPutRequestConfiguration : RequestConfiguration<DefaultQueryParameters> {
+        public class EntropyRequestBuilderPutRequestConfiguration : RequestConfiguration<DefaultQueryParameters> 
+        {
         }
     }
 }

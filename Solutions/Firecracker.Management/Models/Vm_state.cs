@@ -2,10 +2,17 @@
 using System.Runtime.Serialization;
 using System;
 namespace Firecracker.Management.Models {
-    public enum Vm_state {
+    #pragma warning disable CS1591
+    public enum Vm_state
+    #pragma warning restore CS1591
+    {
         [EnumMember(Value = "Paused")]
+        #pragma warning disable CS1591
         Paused,
+        #pragma warning restore CS1591
         [EnumMember(Value = "Resumed")]
+        #pragma warning disable CS1591
         Resumed,
+        #pragma warning restore CS1591
     }
 }

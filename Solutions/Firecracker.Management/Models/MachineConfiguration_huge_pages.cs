@@ -2,16 +2,16 @@
 using System.Runtime.Serialization;
 using System;
 namespace Firecracker.Management.Models {
-    /// <summary>Enumeration indicating the MMDS version to be configured.</summary>
-    public enum MmdsConfig_version
+    /// <summary>Which huge pages configuration (if any) should be used to back guest memory.</summary>
+    public enum MachineConfiguration_huge_pages
     {
-        [EnumMember(Value = "V1")]
+        [EnumMember(Value = "None")]
         #pragma warning disable CS1591
-        V1,
+        None,
         #pragma warning restore CS1591
-        [EnumMember(Value = "V2")]
+        [EnumMember(Value = "2M")]
         #pragma warning disable CS1591
-        V2,
+        TwoM,
         #pragma warning restore CS1591
     }
 }

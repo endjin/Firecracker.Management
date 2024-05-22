@@ -12,20 +12,23 @@ namespace Firecracker.Management.CpuConfig {
     /// <summary>
     /// Builds and executes requests for operations under \cpu-config
     /// </summary>
-    public class CpuConfigRequestBuilder : BaseRequestBuilder {
+    public class CpuConfigRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>
-        /// Instantiates a new CpuConfigRequestBuilder and sets the default values.
+        /// Instantiates a new <see cref="CpuConfigRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CpuConfigRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/cpu-config", pathParameters) {
+        public CpuConfigRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/cpu-config", pathParameters)
+        {
         }
         /// <summary>
-        /// Instantiates a new CpuConfigRequestBuilder and sets the default values.
+        /// Instantiates a new <see cref="CpuConfigRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CpuConfigRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/cpu-config", rawUrl) {
+        public CpuConfigRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/cpu-config", rawUrl)
+        {
         }
         /// <summary>
         /// Provides configuration to the Firecracker process to specify vCPU resource configuration prior to launching the guest machine.
@@ -33,33 +36,40 @@ namespace Firecracker.Management.CpuConfig {
         /// <param name="body">The CPU configuration template defines a set of bit maps as modifiers of flags accessed by register to be disabled/enabled for the microvm.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="Error">When receiving a 400 status code</exception>
+        /// <exception cref="Error">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task PutAsync(Firecracker.Management.Models.CpuConfig body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task PutAsync(Firecracker.Management.Models.CpuConfig body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task PutAsync(Firecracker.Management.Models.CpuConfig body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task PutAsync(Firecracker.Management.Models.CpuConfig body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"400", Error.CreateFromDiscriminatorValue},
-                {"4XX", Error.CreateFromDiscriminatorValue},
-                {"5XX", Error.CreateFromDiscriminatorValue},
+                {"XXX", Error.CreateFromDiscriminatorValue},
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Provides configuration to the Firecracker process to specify vCPU resource configuration prior to launching the guest machine.
         /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The CPU configuration template defines a set of bit maps as modifiers of flags accessed by register to be disabled/enabled for the microvm.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(Firecracker.Management.Models.CpuConfig body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToPutRequestInformation(Firecracker.Management.Models.CpuConfig body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(Firecracker.Management.Models.CpuConfig body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToPutRequestInformation(Firecracker.Management.Models.CpuConfig body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
@@ -71,15 +81,18 @@ namespace Firecracker.Management.CpuConfig {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
+        /// <returns>A <see cref="CpuConfigRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public CpuConfigRequestBuilder WithUrl(string rawUrl) {
+        public CpuConfigRequestBuilder WithUrl(string rawUrl)
+        {
             return new CpuConfigRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class CpuConfigRequestBuilderPutRequestConfiguration : RequestConfiguration<DefaultQueryParameters> {
+        public class CpuConfigRequestBuilderPutRequestConfiguration : RequestConfiguration<DefaultQueryParameters> 
+        {
         }
     }
 }

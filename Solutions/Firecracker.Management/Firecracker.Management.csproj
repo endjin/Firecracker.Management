@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="$(EndjinProjectPropsPath)" Condition="$(EndjinProjectPropsPath) != ''" />
 
@@ -9,7 +9,7 @@
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
@@ -19,7 +19,7 @@
     <PackageDescription>A .NET SDK for the Firecracker Management HTTP API</PackageDescription>
     <PackageTags>Firecracker, microvm</PackageTags>
     <PackageReleaseNotes></PackageReleaseNotes>
-    <Copyright>Copyright (c) Endjin Limited 2023. All rights reserved.</Copyright>
+    <Copyright>Copyright (c) Endjin Limited 2024. All rights reserved.</Copyright>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
   </PropertyGroup>
 
@@ -36,16 +36,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Endjin.RecommendedPractices.GitHub" Version="2.1.8">
+    <PackageReference Include="Endjin.RecommendedPractices.GitHub" Version="2.1.11">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Kiota.Abstractions" Version="1.7.3" />
-    <PackageReference Include="Microsoft.Kiota.Http.HttpClientLibrary" Version="1.3.3" />
-    <PackageReference Include="Microsoft.Kiota.Serialization.Form" Version="1.1.1" />
-    <PackageReference Include="Microsoft.Kiota.Serialization.Json" Version="1.1.2" />
-    <PackageReference Include="Microsoft.Kiota.Serialization.Multipart" Version="1.1.1" />
-    <PackageReference Include="Microsoft.Kiota.Serialization.Text" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Kiota.Abstractions" Version="1.9.1" />
+    <PackageReference Include="Microsoft.Kiota.Http.HttpClientLibrary" Version="1.4.1" />
+    <PackageReference Include="Microsoft.Kiota.Serialization.Form" Version="1.2.1" />
+    <PackageReference Include="Microsoft.Kiota.Serialization.Json" Version="1.3.1" />
+    <PackageReference Include="Microsoft.Kiota.Serialization.Multipart" Version="1.1.4" />
+    <PackageReference Include="Microsoft.Kiota.Serialization.Text" Version="1.2.0" />
   </ItemGroup>
 
 </Project>
