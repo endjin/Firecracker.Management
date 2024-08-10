@@ -1,14 +1,15 @@
 {
-  "descriptionHash": "9CA7D7A8EE2FF67BB9D7641F0EC02422AA54059D03B1250FE0076DC0292E6CECB08D1F0E6B66780ACE9E25E178E0D67C59B843C7C2F5CA476E28B087FB0AF697",
-  "descriptionLocation": "https://raw.githubusercontent.com/firecracker-microvm/firecracker/v1.7.0/src/firecracker/swagger/firecracker.yaml",
+  "descriptionHash": "3B3CE370BC25C1AEAE95F7E9B25095A0CFC08984D01DBF0553457A02887AF285AE0B40DD74FBB4E1802520760D24C5AFCB4DA38D809502E01DCB694ADFB62B53",
+  "descriptionLocation": "https://raw.githubusercontent.com/firecracker-microvm/firecracker/main/src/firecracker/swagger/firecracker.yaml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.14.0",
+  "kiotaVersion": "1.17.0",
   "clientClassName": "FirecrackerManagementClient",
   "clientNamespaceName": "Firecracker.Management",
   "language": "CSharp",
   "usesBackingStore": false,
   "excludeBackwardCompatible": false,
   "includeAdditionalData": true,
+  "disableSSLValidation": false,
   "serializers": [
     "Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory",
     "Microsoft.Kiota.Serialization.Text.TextSerializationWriterFactory",
