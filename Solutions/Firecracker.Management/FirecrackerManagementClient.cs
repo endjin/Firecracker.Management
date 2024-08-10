@@ -24,93 +24,94 @@ using Microsoft.Kiota.Serialization.Multipart;
 using Microsoft.Kiota.Serialization.Text;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Firecracker.Management {
+namespace Firecracker.Management
+{
     /// <summary>
     /// The main entry point of the SDK, exposes the configuration and the fluent API.
     /// </summary>
-    public class FirecrackerManagementClient : BaseRequestBuilder 
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.17.0")]
+    public partial class FirecrackerManagementClient : BaseRequestBuilder
     {
         /// <summary>The actions property</summary>
-        public ActionsRequestBuilder Actions
+        public global::Firecracker.Management.Actions.ActionsRequestBuilder Actions
         {
-            get => new ActionsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Firecracker.Management.Actions.ActionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The balloon property</summary>
-        public BalloonRequestBuilder Balloon
+        public global::Firecracker.Management.Balloon.BalloonRequestBuilder Balloon
         {
-            get => new BalloonRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Firecracker.Management.Balloon.BalloonRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The bootSource property</summary>
-        public BootSourceRequestBuilder BootSource
+        public global::Firecracker.Management.BootSource.BootSourceRequestBuilder BootSource
         {
-            get => new BootSourceRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Firecracker.Management.BootSource.BootSourceRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The cpuConfig property</summary>
-        public CpuConfigRequestBuilder CpuConfig
+        public global::Firecracker.Management.CpuConfig.CpuConfigRequestBuilder CpuConfig
         {
-            get => new CpuConfigRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Firecracker.Management.CpuConfig.CpuConfigRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The drives property</summary>
-        public DrivesRequestBuilder Drives
+        public global::Firecracker.Management.Drives.DrivesRequestBuilder Drives
         {
-            get => new DrivesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Firecracker.Management.Drives.DrivesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The entropy property</summary>
-        public EntropyRequestBuilder Entropy
+        public global::Firecracker.Management.Entropy.EntropyRequestBuilder Entropy
         {
-            get => new EntropyRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Firecracker.Management.Entropy.EntropyRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The logger property</summary>
-        public LoggerRequestBuilder Logger
+        public global::Firecracker.Management.Logger.LoggerRequestBuilder Logger
         {
-            get => new LoggerRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Firecracker.Management.Logger.LoggerRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The machineConfig property</summary>
-        public MachineConfigRequestBuilder MachineConfig
+        public global::Firecracker.Management.MachineConfig.MachineConfigRequestBuilder MachineConfig
         {
-            get => new MachineConfigRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Firecracker.Management.MachineConfig.MachineConfigRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The metrics property</summary>
-        public MetricsRequestBuilder Metrics
+        public global::Firecracker.Management.Metrics.MetricsRequestBuilder Metrics
         {
-            get => new MetricsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Firecracker.Management.Metrics.MetricsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The mmds property</summary>
-        public MmdsRequestBuilder Mmds
+        public global::Firecracker.Management.Mmds.MmdsRequestBuilder Mmds
         {
-            get => new MmdsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Firecracker.Management.Mmds.MmdsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The networkInterfaces property</summary>
-        public NetworkInterfacesRequestBuilder NetworkInterfaces
+        public global::Firecracker.Management.NetworkInterfaces.NetworkInterfacesRequestBuilder NetworkInterfaces
         {
-            get => new NetworkInterfacesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Firecracker.Management.NetworkInterfaces.NetworkInterfacesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The snapshot property</summary>
-        public SnapshotRequestBuilder Snapshot
+        public global::Firecracker.Management.Snapshot.SnapshotRequestBuilder Snapshot
         {
-            get => new SnapshotRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Firecracker.Management.Snapshot.SnapshotRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The version property</summary>
-        public VersionRequestBuilder Version
+        public global::Firecracker.Management.VersionNamespace.VersionRequestBuilder Version
         {
-            get => new VersionRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Firecracker.Management.VersionNamespace.VersionRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The vm property</summary>
-        public VmRequestBuilder Vm
+        public global::Firecracker.Management.Vm.VmRequestBuilder Vm
         {
-            get => new VmRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Firecracker.Management.Vm.VmRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The vsock property</summary>
-        public VsockRequestBuilder Vsock
+        public global::Firecracker.Management.Vsock.VsockRequestBuilder Vsock
         {
-            get => new VsockRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Firecracker.Management.Vsock.VsockRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="FirecrackerManagementClient"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Firecracker.Management.FirecrackerManagementClient"/> and sets the default values.
         /// </summary>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         public FirecrackerManagementClient(IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}", new Dictionary<string, object>())
@@ -131,25 +132,25 @@ namespace Firecracker.Management {
         /// <summary>
         /// Returns general information about an instance.
         /// </summary>
-        /// <returns>A <see cref="InstanceInfo"/></returns>
+        /// <returns>A <see cref="global::Firecracker.Management.Models.InstanceInfo"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="Error">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="global::Firecracker.Management.Models.Error">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<InstanceInfo?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Firecracker.Management.Models.InstanceInfo?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<InstanceInfo> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Firecracker.Management.Models.InstanceInfo> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", Error.CreateFromDiscriminatorValue},
+                { "XXX", global::Firecracker.Management.Models.Error.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<InstanceInfo>(requestInfo, InstanceInfo.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Firecracker.Management.Models.InstanceInfo>(requestInfo, global::Firecracker.Management.Models.InstanceInfo.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns general information about an instance.
@@ -174,7 +175,8 @@ namespace Firecracker.Management {
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class FirecrackerManagementClientGetRequestConfiguration : RequestConfiguration<DefaultQueryParameters> 
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.17.0")]
+        public partial class FirecrackerManagementClientGetRequestConfiguration : RequestConfiguration<DefaultQueryParameters>
         {
         }
     }
