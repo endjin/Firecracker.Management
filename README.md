@@ -1,6 +1,6 @@
 # Firecracker Management
 
-A .NET SDK for accessing the Firecracker Management HTTP API, based on the official [OpenAPI specification](https://github.com/firecracker-microvm/firecracker/blob/main/src/api_server/swagger/firecracker.yaml).
+A .NET SDK for accessing the Firecracker Management HTTP API, based on the official [OpenAPI specification](https://github.com/firecracker-microvm/firecracker/blob/main/src/firecracker/swagger/firecracker.yaml).
 
 [![Build Status](https://github.com/endjin/Firecracker.Management/actions/workflows/build.yml/badge.svg)](https://github.com/endjin/Firecracker.Management/actions/workflows/build.yml/)
 [![#](https://img.shields.io/nuget/v/adr.svg)](https://www.nuget.org/packages/adr/) 
