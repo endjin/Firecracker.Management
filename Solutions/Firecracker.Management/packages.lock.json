@@ -14,56 +14,56 @@
       },
       "Microsoft.Kiota.Abstractions": {
         "type": "Direct",
-        "requested": "[1.11.1, )",
-        "resolved": "1.11.1",
-        "contentHash": "0pgYwLgsptoUjsRA9IQ8y72nFS9nAI+5qh9UoBmttKTH49xhd6A/J1f0C/f28PYk0UFAfJ+wUCctVJXEZyXXvg==",
+        "requested": "[1.12.4, )",
+        "resolved": "1.12.4",
+        "contentHash": "QdejmTJHJpX8TQOdPyvy72ztf6zGBs8fHFyKC+/N++GbLeLIHa96yI6WcHM0Nndfr+27MmCZI2taJuubL4VekQ==",
         "dependencies": {
-          "Std.UriTemplate": "1.0.5"
+          "Std.UriTemplate": "1.0.6"
         }
       },
       "Microsoft.Kiota.Http.HttpClientLibrary": {
         "type": "Direct",
-        "requested": "[1.11.1, )",
-        "resolved": "1.11.1",
-        "contentHash": "KBAx1KGHiRaMcqwQRD7wKCvjMoI/e142W7uXNdVeC50CjKMegu8GfrYvud7R5+nVQyYlg1HQfLAWV2oXT203oQ==",
+        "requested": "[1.12.4, )",
+        "resolved": "1.12.4",
+        "contentHash": "X0PFcNG2tUJzDccPPwIy8/jq+LuH/7ApyOg8+frblmWIHE4TCLRfWvW2w7wK55sXXH92iDmYLaubWAE0w+J2Gg==",
         "dependencies": {
-          "Microsoft.Kiota.Abstractions": "1.11.1"
+          "Microsoft.Kiota.Abstractions": "1.12.4"
         }
       },
       "Microsoft.Kiota.Serialization.Form": {
         "type": "Direct",
-        "requested": "[1.11.1, )",
-        "resolved": "1.11.1",
-        "contentHash": "Tu+X6h3A51i58tkVIp7p4uIDQH1RmDrvFtW9XoaHBFr2hB2IFjx0vQpZxV24v1SR8mtq86+6rT1EcRQ9ivkI8A==",
+        "requested": "[1.12.4, )",
+        "resolved": "1.12.4",
+        "contentHash": "lByjqLMw3h0SHuLREeunmJCIhfC050cRNwIlb980gAujHx7lDnEC3rxchNb/dtlnewWFKT4sHdsysE5Dmh4mAQ==",
         "dependencies": {
-          "Microsoft.Kiota.Abstractions": "1.11.1"
+          "Microsoft.Kiota.Abstractions": "1.12.4"
         }
       },
       "Microsoft.Kiota.Serialization.Json": {
         "type": "Direct",
-        "requested": "[1.11.1, )",
-        "resolved": "1.11.1",
-        "contentHash": "mP50zO0OhLywYbqPVEGvLEH5hemcEKy11ZYZc3tqVaj8f4OZu+TYiJw3PriW3FEV0Xt8rVBA3z2IvwJ8IJOT0w==",
+        "requested": "[1.12.4, )",
+        "resolved": "1.12.4",
+        "contentHash": "xclx4GUj8ynaMpH3ST+3xDYRGdi+coQPtYAS2nIShcF79o9FUQZI0uOGEUQNBBYOtNMtg5tO65A86wWZaH/LUA==",
         "dependencies": {
-          "Microsoft.Kiota.Abstractions": "1.11.1"
+          "Microsoft.Kiota.Abstractions": "1.12.4"
         }
       },
       "Microsoft.Kiota.Serialization.Multipart": {
         "type": "Direct",
-        "requested": "[1.11.1, )",
-        "resolved": "1.11.1",
-        "contentHash": "BUVx1zNPDlZcaBx+QPMGwjJzyS4jKsoLm2qTU5qDuCpuLX5GA0BzAyQl2PlMI/ozggF35wS8l8Ks82uCM7QH/Q==",
+        "requested": "[1.12.4, )",
+        "resolved": "1.12.4",
+        "contentHash": "Mbnt45XYCa2Blcx3e+UunHZHHuptwDnRUkVbtUPTJ6W0x2lD+xhPyBmCBhm1UPchbesV4Iefpy2cz13AepexfQ==",
         "dependencies": {
-          "Microsoft.Kiota.Abstractions": "1.11.1"
+          "Microsoft.Kiota.Abstractions": "1.12.4"
         }
       },
       "Microsoft.Kiota.Serialization.Text": {
         "type": "Direct",
-        "requested": "[1.11.1, )",
-        "resolved": "1.11.1",
-        "contentHash": "0aWsuZTMOe+7Yu4XfYLI8qtT2atHuxb7R3CmPbdm0Ok/PFR1VTLfLo5vRm59vuaGmT19oEPoxsejXLC+yp1uiQ==",
+        "requested": "[1.12.4, )",
+        "resolved": "1.12.4",
+        "contentHash": "EASWKqG7eLMS2giyCxulkO27BVp0UiObsISTapGaRy8tihAdmTL2fJEky7jzLFdEqGiz8WUo7eiZB1mjjHCgMA==",
         "dependencies": {
-          "Microsoft.Kiota.Abstractions": "1.11.1"
+          "Microsoft.Kiota.Abstractions": "1.12.4"
         }
       },
       "Roslynator.Analyzers": {
@@ -110,8 +110,8 @@
       },
       "Std.UriTemplate": {
         "type": "Transitive",
-        "resolved": "1.0.5",
-        "contentHash": "ry++apw4RKBw/9N8TQxnTTQYf/lgGGdn9+mq7AUMf860qD8STssQRe5tRX0NO99rGwpSRZzHO7u6ebQ/wahSNw=="
+        "resolved": "1.0.6",
+        "contentHash": "+vHQKLW8wYglpDn1IGVvZh90xQXkD4W2xNtksgeoiZn2IoBt+gW8A9OFAjHf97DlC8P/0/1IuH8QZO91MhZ6OA=="
       },
       "StyleCop.Analyzers.Unstable": {
         "type": "Transitive",
