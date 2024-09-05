@@ -4,7 +4,7 @@ using System;
 namespace Firecracker.Management.Models
 {
     /// <summary>Which huge pages configuration (if any) should be used to back guest memory.</summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.17.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
     public enum MachineConfiguration_huge_pages
     {
         [EnumMember(Value = "None")]
