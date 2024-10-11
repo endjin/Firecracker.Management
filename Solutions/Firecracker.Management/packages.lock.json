@@ -14,11 +14,11 @@
       },
       "Microsoft.Kiota.Abstractions": {
         "type": "Direct",
-        "requested": "[1.12.4, )",
-        "resolved": "1.12.4",
-        "contentHash": "QdejmTJHJpX8TQOdPyvy72ztf6zGBs8fHFyKC+/N++GbLeLIHa96yI6WcHM0Nndfr+27MmCZI2taJuubL4VekQ==",
+        "requested": "[1.13.1, )",
+        "resolved": "1.13.1",
+        "contentHash": "RJWCkL+tmDjbOO9AHh1gCd34uVm2Zmz9h1q3pJgJL9u4jePeX+Wgx2moOOxtdINRfb0efKiSCvgkwLnUrXm7Gw==",
         "dependencies": {
-          "Std.UriTemplate": "1.0.6"
+          "Std.UriTemplate": "2.0.0"
         }
       },
       "Microsoft.Kiota.Http.HttpClientLibrary": {
@@ -59,26 +59,11 @@
       },
       "Microsoft.Kiota.Serialization.Text": {
         "type": "Direct",
-        "requested": "[1.12.4, )",
-        "resolved": "1.12.4",
-        "contentHash": "EASWKqG7eLMS2giyCxulkO27BVp0UiObsISTapGaRy8tihAdmTL2fJEky7jzLFdEqGiz8WUo7eiZB1mjjHCgMA==",
+        "requested": "[1.13.1, )",
+        "resolved": "1.13.1",
+        "contentHash": "UF3/mZFC7HqEcMUOXJwiACkykgWxhrs0m9a4u4/YnlbK14h1keoOJIRXMguAce6jOlLA4VgveNGjxSWYQ5pHzA==",
         "dependencies": {
-          "Microsoft.Kiota.Abstractions": "1.12.4"
-        }
-      },
-      "Roslynator.Analyzers": {
-        "type": "Direct",
-        "requested": "[4.12.4, )",
-        "resolved": "4.12.4",
-        "contentHash": "isl8hAh7yFNjyBEC4YlTSi+xGBblqBUC/2MCMmnBPwuXPewb7XYnMRzT3vXbP/gOGwT8hZUOy1g/aRH3lAF/NQ=="
-      },
-      "StyleCop.Analyzers": {
-        "type": "Direct",
-        "requested": "[1.2.0-beta.556, )",
-        "resolved": "1.2.0-beta.556",
-        "contentHash": "llRPgmA1fhC0I0QyFLEcjvtM2239QzKr/tcnbsjArLMJxJlu0AA5G7Fft0OI30pHF3MW63Gf4aSSsjc5m82J1Q==",
-        "dependencies": {
-          "StyleCop.Analyzers.Unstable": "1.2.0.556"
+          "Microsoft.Kiota.Abstractions": "1.13.1"
         }
       },
       "Endjin.RecommendedPractices": {
@@ -110,13 +95,8 @@
       },
       "Std.UriTemplate": {
         "type": "Transitive",
-        "resolved": "1.0.6",
-        "contentHash": "+vHQKLW8wYglpDn1IGVvZh90xQXkD4W2xNtksgeoiZn2IoBt+gW8A9OFAjHf97DlC8P/0/1IuH8QZO91MhZ6OA=="
-      },
-      "StyleCop.Analyzers.Unstable": {
-        "type": "Transitive",
-        "resolved": "1.2.0.556",
-        "contentHash": "zvn9Mqs/ox/83cpYPignI8hJEM2A93s2HkHs8HYMOAQW0PkampyoErAiIyKxgTLqbbad29HX/shv/6LGSjPJNQ=="
+        "resolved": "2.0.0",
+        "contentHash": "GNBep1IBAGlVG3TUs1ZZ+1H9jgsw1ojBF6u34o8hpZC/YSTJCzCu4uYGU76a8SvhC8Q8baGqnmwJjHdxsVSUyg=="
       }
     }
   }
