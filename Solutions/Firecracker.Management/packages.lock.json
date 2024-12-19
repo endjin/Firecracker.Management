@@ -14,9 +14,9 @@
       },
       "Microsoft.Kiota.Abstractions": {
         "type": "Direct",
-        "requested": "[1.15.2, )",
-        "resolved": "1.15.2",
-        "contentHash": "66Fee4JyIzUsewQmMfdXXBIF0Davawb0KzT9Hlp8kFO1X1HGUhnuAvaRY7MkEtddleasJJRnCT4qJHht225uIw==",
+        "requested": "[1.16.1, )",
+        "resolved": "1.16.1",
+        "contentHash": "GJmceZyMhgXJX4MFF0k5pmLKh0Dxuvbi9Kl3t0hQl70uJzLncGMQNewFp95QGYS9qRL0u4ib2bxP6H+ZDmtKSA==",
         "dependencies": {
           "Std.UriTemplate": "2.0.1"
         }
@@ -59,11 +59,11 @@
       },
       "Microsoft.Kiota.Serialization.Text": {
         "type": "Direct",
-        "requested": "[1.15.2, )",
-        "resolved": "1.15.2",
-        "contentHash": "G+4HLx8vdWdZBwuHbxSvMugdgWti9HjafWCqdDsgD8Ncsmbf38ws7A24kH76eRshn/LEpufGYZprOmy0R9jblw==",
+        "requested": "[1.16.1, )",
+        "resolved": "1.16.1",
+        "contentHash": "UdZGWU1isExkXYAzm3ANfeze/L1R4RjYEEm5pumnVqIcMgshcr7aNBw6ko885y56oZtK4v2m2S34LTI/JQMlCQ==",
         "dependencies": {
-          "Microsoft.Kiota.Abstractions": "1.15.2"
+          "Microsoft.Kiota.Abstractions": "1.16.1"
         }
       },
       "Endjin.RecommendedPractices": {
