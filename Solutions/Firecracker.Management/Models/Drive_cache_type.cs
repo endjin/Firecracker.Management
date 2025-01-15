@@ -4,7 +4,7 @@ using System;
 namespace Firecracker.Management.Models
 {
     /// <summary>Represents the caching strategy for the block device.</summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Drive_cache_type
     {
         [EnumMember(Value = "Unsafe")]

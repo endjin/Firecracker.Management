@@ -1,9 +1,10 @@
 {
-  "descriptionHash": "63AEE13E9E2F05F9FF529638519AA9384E02C038A2DEE655F66D9EA85A385AC59F06A9CE27E8B7FB80D71728E692884C7B5C20584EC0FBF1C4918661423AB34A",
+  "descriptionHash": "41341E65F207DE2F5841B12FE2DAFE8ECCEF709981F60C55D3F9659CF5EB00C7F1D62ADE439CD07DE0319A4CDB3D75A4071BB98761C366A0F294CECDFA2BDBF1",
   "descriptionLocation": "https://raw.githubusercontent.com/firecracker-microvm/firecracker/main/src/firecracker/swagger/firecracker.yaml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.18.0",
+  "kiotaVersion": "1.22.3",
   "clientClassName": "FirecrackerManagementClient",
+  "typeAccessModifier": "Public",
   "clientNamespaceName": "Firecracker.Management",
   "language": "CSharp",
   "usesBackingStore": false,

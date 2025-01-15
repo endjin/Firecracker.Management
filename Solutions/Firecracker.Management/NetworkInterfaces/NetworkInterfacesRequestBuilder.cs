@@ -12,7 +12,7 @@ namespace Firecracker.Management.NetworkInterfaces
     /// <summary>
     /// Builds and executes requests for operations under \network-interfaces
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class NetworkInterfacesRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Firecracker.Management.networkInterfaces.item collection</summary>

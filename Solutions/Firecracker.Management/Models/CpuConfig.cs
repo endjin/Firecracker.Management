@@ -10,7 +10,7 @@ namespace Firecracker.Management.Models
     /// <summary>
     /// The CPU configuration template defines a set of bit maps as modifiers of flags accessed by register to be disabled/enabled for the microvm.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CpuConfig : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -22,6 +22,13 @@ namespace Firecracker.Management.Models
 #nullable restore
 #else
         public global::Firecracker.Management.Models.CpuConfig_cpuid_modifiers CpuidModifiers { get; set; }
+#endif
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Firecracker.Management.Models.CpuConfig_kvm_capabilities? KvmCapabilities { get; set; }
+#nullable restore
+#else
+        public global::Firecracker.Management.Models.CpuConfig_kvm_capabilities KvmCapabilities { get; set; }
 #endif
         /// <summary>A collection of model specific registers to be modified. (x86_64)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -38,6 +45,13 @@ namespace Firecracker.Management.Models
 #nullable restore
 #else
         public global::Firecracker.Management.Models.CpuConfig_reg_modifiers RegModifiers { get; set; }
+#endif
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Firecracker.Management.Models.CpuConfig_vcpu_features? VcpuFeatures { get; set; }
+#nullable restore
+#else
+        public global::Firecracker.Management.Models.CpuConfig_vcpu_features VcpuFeatures { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Firecracker.Management.Models.CpuConfig"/> and sets the default values.
@@ -65,8 +79,10 @@ namespace Firecracker.Management.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "cpuid_modifiers", n => { CpuidModifiers = n.GetObjectValue<global::Firecracker.Management.Models.CpuConfig_cpuid_modifiers>(global::Firecracker.Management.Models.CpuConfig_cpuid_modifiers.CreateFromDiscriminatorValue); } },
+                { "kvm_capabilities", n => { KvmCapabilities = n.GetObjectValue<global::Firecracker.Management.Models.CpuConfig_kvm_capabilities>(global::Firecracker.Management.Models.CpuConfig_kvm_capabilities.CreateFromDiscriminatorValue); } },
                 { "msr_modifiers", n => { MsrModifiers = n.GetObjectValue<global::Firecracker.Management.Models.CpuConfig_msr_modifiers>(global::Firecracker.Management.Models.CpuConfig_msr_modifiers.CreateFromDiscriminatorValue); } },
                 { "reg_modifiers", n => { RegModifiers = n.GetObjectValue<global::Firecracker.Management.Models.CpuConfig_reg_modifiers>(global::Firecracker.Management.Models.CpuConfig_reg_modifiers.CreateFromDiscriminatorValue); } },
+                { "vcpu_features", n => { VcpuFeatures = n.GetObjectValue<global::Firecracker.Management.Models.CpuConfig_vcpu_features>(global::Firecracker.Management.Models.CpuConfig_vcpu_features.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -77,8 +93,10 @@ namespace Firecracker.Management.Models
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Firecracker.Management.Models.CpuConfig_cpuid_modifiers>("cpuid_modifiers", CpuidModifiers);
+            writer.WriteObjectValue<global::Firecracker.Management.Models.CpuConfig_kvm_capabilities>("kvm_capabilities", KvmCapabilities);
             writer.WriteObjectValue<global::Firecracker.Management.Models.CpuConfig_msr_modifiers>("msr_modifiers", MsrModifiers);
             writer.WriteObjectValue<global::Firecracker.Management.Models.CpuConfig_reg_modifiers>("reg_modifiers", RegModifiers);
+            writer.WriteObjectValue<global::Firecracker.Management.Models.CpuConfig_vcpu_features>("vcpu_features", VcpuFeatures);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

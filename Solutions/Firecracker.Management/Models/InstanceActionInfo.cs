@@ -10,7 +10,7 @@ namespace Firecracker.Management.Models
     /// <summary>
     /// Variant wrapper containing the real action.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class InstanceActionInfo : IAdditionalDataHolder, IParsable
     {
         /// <summary>Enumeration indicating what type of action is contained in the payload</summary>

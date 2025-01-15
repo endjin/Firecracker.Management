@@ -4,7 +4,7 @@ using System;
 namespace Firecracker.Management.Models
 {
     /// <summary>Set the level. The possible values are case-insensitive.</summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Logger_level
     {
         [EnumMember(Value = "Error")]
