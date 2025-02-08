@@ -10,7 +10,7 @@ namespace Firecracker.Management.Models
     /// <summary>
     /// Update the statistics polling interval, with the first statistics update scheduled immediately. Statistics cannot be turned on/off after boot.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class BalloonStatsUpdate : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>

@@ -12,7 +12,7 @@ namespace Firecracker.Management.Drives
     /// <summary>
     /// Builds and executes requests for operations under \drives
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DrivesRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Firecracker.Management.drives.item collection</summary>

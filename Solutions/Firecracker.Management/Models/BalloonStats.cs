@@ -10,7 +10,7 @@ namespace Firecracker.Management.Models
     /// <summary>
     /// Describes the balloon device statistics.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class BalloonStats : IAdditionalDataHolder, IParsable
     {
         /// <summary>Actual amount of memory (in MiB) the device is holding.</summary>

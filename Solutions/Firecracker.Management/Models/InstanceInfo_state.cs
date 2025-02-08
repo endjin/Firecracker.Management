@@ -4,7 +4,7 @@ using System;
 namespace Firecracker.Management.Models
 {
     /// <summary>The current detailed state (Not started, Running, Paused) of the Firecracker instance. This value is read-only for the control-plane.</summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum InstanceInfo_state
     {
         [EnumMember(Value = "Not started")]

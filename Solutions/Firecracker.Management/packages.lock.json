@@ -14,56 +14,71 @@
       },
       "Microsoft.Kiota.Abstractions": {
         "type": "Direct",
-        "requested": "[1.15.2, )",
-        "resolved": "1.15.2",
-        "contentHash": "66Fee4JyIzUsewQmMfdXXBIF0Davawb0KzT9Hlp8kFO1X1HGUhnuAvaRY7MkEtddleasJJRnCT4qJHht225uIw==",
+        "requested": "[1.16.4, )",
+        "resolved": "1.16.4",
+        "contentHash": "pLQcH9tYRPA3CCsrqFUajUUaR8UmsqPmQExigpOfdaFvUXuMauUcCqxVnRGVnN002HqtOdsc/zKVewj6tFD6Dg==",
         "dependencies": {
           "Std.UriTemplate": "2.0.1"
         }
       },
       "Microsoft.Kiota.Http.HttpClientLibrary": {
         "type": "Direct",
-        "requested": "[1.15.2, )",
-        "resolved": "1.15.2",
-        "contentHash": "WfVlAoajgsZHzqn1OKTOvSx6rcVSKOl4OLggg40yhz6F9f4wTNlrH5ucAXMzq31G6kmlLaoYulqd0iyhQNEbLg==",
+        "requested": "[1.16.4, )",
+        "resolved": "1.16.4",
+        "contentHash": "5qf2xS5gXgO842V/tTiNqEt5VaMENWm23KMznl8SUl+UWkBeN55KKY0abRrQrw56igkwJJG6ReBwZoPQtwqHDg==",
         "dependencies": {
-          "Microsoft.Kiota.Abstractions": "1.15.2"
+          "Microsoft.Kiota.Abstractions": "1.16.4"
         }
       },
       "Microsoft.Kiota.Serialization.Form": {
         "type": "Direct",
-        "requested": "[1.15.2, )",
-        "resolved": "1.15.2",
-        "contentHash": "Jg1Qm2VYoshCX7OgEPrUQ2s6EUdErYxdWGLmPiKzRhr89dTPA4FeXqM9kjKZyWw8+oeYKg0/hw3u09z40/HoqQ==",
+        "requested": "[1.16.4, )",
+        "resolved": "1.16.4",
+        "contentHash": "P/fnIzYON3qArN3a3dFtSXKxG2hf1K8Iq8RLesQIc0naMwFDYq4SSE3JcRNJ9YQQUOHKcoeRdP29BpkCFkbrhg==",
         "dependencies": {
-          "Microsoft.Kiota.Abstractions": "1.15.2"
+          "Microsoft.Kiota.Abstractions": "1.16.4"
         }
       },
       "Microsoft.Kiota.Serialization.Json": {
         "type": "Direct",
-        "requested": "[1.15.2, )",
-        "resolved": "1.15.2",
-        "contentHash": "0so0Sn9NLMh12dZxbtP0GnWSUUhWUo7uHmjsv22O19gtRkVBytVXVK3mPG4JiSKw9pS32yFz5DhtiSTcPD4eCg==",
+        "requested": "[1.16.4, )",
+        "resolved": "1.16.4",
+        "contentHash": "WXRv4dhjwDcky+27MX6Q4L96s38ChhPSqdgOENhDsEHAZiN/YYjq1IBvQk31fnxJraqyJR/IbG84c51B1gNhJw==",
         "dependencies": {
-          "Microsoft.Kiota.Abstractions": "1.15.2"
+          "Microsoft.Kiota.Abstractions": "1.16.4"
         }
       },
       "Microsoft.Kiota.Serialization.Multipart": {
         "type": "Direct",
-        "requested": "[1.15.2, )",
-        "resolved": "1.15.2",
-        "contentHash": "JR2rDxF7PlvVslEGp2dVcevwyX+4ry6AuttZCwvd16fVqQfeZx26b5a207Fu0P5rr5qaEi0RdZrJSNqC7w2Eew==",
+        "requested": "[1.16.4, )",
+        "resolved": "1.16.4",
+        "contentHash": "QgY2Ckeipd53H5dyPv9v8far2BAPMa4dVNnLFd/m3uS7nQWi9ammB3Aj/cBArIeUvG1bznahCf9Tx2bDdtPGhQ==",
         "dependencies": {
-          "Microsoft.Kiota.Abstractions": "1.15.2"
+          "Microsoft.Kiota.Abstractions": "1.16.4"
         }
       },
       "Microsoft.Kiota.Serialization.Text": {
         "type": "Direct",
-        "requested": "[1.15.2, )",
-        "resolved": "1.15.2",
-        "contentHash": "G+4HLx8vdWdZBwuHbxSvMugdgWti9HjafWCqdDsgD8Ncsmbf38ws7A24kH76eRshn/LEpufGYZprOmy0R9jblw==",
+        "requested": "[1.16.4, )",
+        "resolved": "1.16.4",
+        "contentHash": "TkThf7kvYwcGLW9OlxCkfppjJzV/YOrUfZhK8YYKshPwfOrsw4AkH35oUx/seC9pxxzb9xKecMHJ2GstunD53Q==",
         "dependencies": {
-          "Microsoft.Kiota.Abstractions": "1.15.2"
+          "Microsoft.Kiota.Abstractions": "1.16.4"
+        }
+      },
+      "Roslynator.Analyzers": {
+        "type": "Direct",
+        "requested": "[4.12.10, )",
+        "resolved": "4.12.10",
+        "contentHash": "Wecq3nfhTvnJPxX87hKbjMdX1xeCAMJf9rdBX3nQLTntQs9v0fFbUB2eQSSOArXMuFh7MxjLWaL4+b6XMi1NDA=="
+      },
+      "StyleCop.Analyzers": {
+        "type": "Direct",
+        "requested": "[1.2.0-beta.556, )",
+        "resolved": "1.2.0-beta.556",
+        "contentHash": "llRPgmA1fhC0I0QyFLEcjvtM2239QzKr/tcnbsjArLMJxJlu0AA5G7Fft0OI30pHF3MW63Gf4aSSsjc5m82J1Q==",
+        "dependencies": {
+          "StyleCop.Analyzers.Unstable": "1.2.0.556"
         }
       },
       "Endjin.RecommendedPractices": {
@@ -97,6 +112,11 @@
         "type": "Transitive",
         "resolved": "2.0.1",
         "contentHash": "Ix5VXZwLfolwVHyGTSSJl6KIJ2le6E9YjLdZBMS1Xxzw7VJankRvQW8JoUL69tEgfcw+0qjgWrlxANrhvS0QCQ=="
+      },
+      "StyleCop.Analyzers.Unstable": {
+        "type": "Transitive",
+        "resolved": "1.2.0.556",
+        "contentHash": "zvn9Mqs/ox/83cpYPignI8hJEM2A93s2HkHs8HYMOAQW0PkampyoErAiIyKxgTLqbbad29HX/shv/6LGSjPJNQ=="
       }
     }
   }

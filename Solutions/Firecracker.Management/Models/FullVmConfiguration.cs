@@ -7,7 +7,7 @@ using System.IO;
 using System;
 namespace Firecracker.Management.Models
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
     public partial class FullVmConfiguration : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
@@ -30,6 +30,14 @@ namespace Firecracker.Management.Models
 #else
         public global::Firecracker.Management.Models.BootSource BootSource { get; set; }
 #endif
+        /// <summary>The CPU configuration template defines a set of bit maps as modifiers of flags accessed by register to be disabled/enabled for the microvm.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Firecracker.Management.Models.CpuConfig? CpuConfig { get; set; }
+#nullable restore
+#else
+        public global::Firecracker.Management.Models.CpuConfig CpuConfig { get; set; }
+#endif
         /// <summary>Configurations for all block devices.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -37,6 +45,14 @@ namespace Firecracker.Management.Models
 #nullable restore
 #else
         public List<global::Firecracker.Management.Models.Drive> Drives { get; set; }
+#endif
+        /// <summary>Defines an entropy device.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Firecracker.Management.Models.EntropyDevice? Entropy { get; set; }
+#nullable restore
+#else
+        public global::Firecracker.Management.Models.EntropyDevice Entropy { get; set; }
 #endif
         /// <summary>Describes the configuration option for the logging capability.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -113,7 +129,9 @@ namespace Firecracker.Management.Models
             {
                 { "balloon", n => { Balloon = n.GetObjectValue<global::Firecracker.Management.Models.Balloon>(global::Firecracker.Management.Models.Balloon.CreateFromDiscriminatorValue); } },
                 { "boot-source", n => { BootSource = n.GetObjectValue<global::Firecracker.Management.Models.BootSource>(global::Firecracker.Management.Models.BootSource.CreateFromDiscriminatorValue); } },
+                { "cpu-config", n => { CpuConfig = n.GetObjectValue<global::Firecracker.Management.Models.CpuConfig>(global::Firecracker.Management.Models.CpuConfig.CreateFromDiscriminatorValue); } },
                 { "drives", n => { Drives = n.GetCollectionOfObjectValues<global::Firecracker.Management.Models.Drive>(global::Firecracker.Management.Models.Drive.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "entropy", n => { Entropy = n.GetObjectValue<global::Firecracker.Management.Models.EntropyDevice>(global::Firecracker.Management.Models.EntropyDevice.CreateFromDiscriminatorValue); } },
                 { "logger", n => { Logger = n.GetObjectValue<global::Firecracker.Management.Models.Logger>(global::Firecracker.Management.Models.Logger.CreateFromDiscriminatorValue); } },
                 { "machine-config", n => { MachineConfig = n.GetObjectValue<global::Firecracker.Management.Models.MachineConfiguration>(global::Firecracker.Management.Models.MachineConfiguration.CreateFromDiscriminatorValue); } },
                 { "metrics", n => { Metrics = n.GetObjectValue<global::Firecracker.Management.Models.Metrics>(global::Firecracker.Management.Models.Metrics.CreateFromDiscriminatorValue); } },
@@ -131,7 +149,9 @@ namespace Firecracker.Management.Models
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Firecracker.Management.Models.Balloon>("balloon", Balloon);
             writer.WriteObjectValue<global::Firecracker.Management.Models.BootSource>("boot-source", BootSource);
+            writer.WriteObjectValue<global::Firecracker.Management.Models.CpuConfig>("cpu-config", CpuConfig);
             writer.WriteCollectionOfObjectValues<global::Firecracker.Management.Models.Drive>("drives", Drives);
+            writer.WriteObjectValue<global::Firecracker.Management.Models.EntropyDevice>("entropy", Entropy);
             writer.WriteObjectValue<global::Firecracker.Management.Models.Logger>("logger", Logger);
             writer.WriteObjectValue<global::Firecracker.Management.Models.MachineConfiguration>("machine-config", MachineConfig);
             writer.WriteObjectValue<global::Firecracker.Management.Models.Metrics>("metrics", Metrics);

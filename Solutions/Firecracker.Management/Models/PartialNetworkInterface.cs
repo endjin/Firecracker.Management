@@ -10,7 +10,7 @@ namespace Firecracker.Management.Models
     /// <summary>
     /// Defines a partial network interface structure, used to update the rate limiters for that interface, after microvm start.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PartialNetworkInterface : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
