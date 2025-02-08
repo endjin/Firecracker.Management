@@ -14,9 +14,9 @@
       },
       "Microsoft.Kiota.Abstractions": {
         "type": "Direct",
-        "requested": "[1.16.4, )",
-        "resolved": "1.16.4",
-        "contentHash": "pLQcH9tYRPA3CCsrqFUajUUaR8UmsqPmQExigpOfdaFvUXuMauUcCqxVnRGVnN002HqtOdsc/zKVewj6tFD6Dg==",
+        "requested": "[1.17.0, )",
+        "resolved": "1.17.0",
+        "contentHash": "bbxmG3yRZMYg970hnbHndMU72gTg4FXAuH82pC8RN1fbTo5jwkTVtYPumBGqPT4pQBd9VuwSPAFXQziFMADvyA==",
         "dependencies": {
           "Std.UriTemplate": "2.0.1"
         }
@@ -66,21 +66,6 @@
           "Microsoft.Kiota.Abstractions": "1.16.4"
         }
       },
-      "Roslynator.Analyzers": {
-        "type": "Direct",
-        "requested": "[4.12.10, )",
-        "resolved": "4.12.10",
-        "contentHash": "Wecq3nfhTvnJPxX87hKbjMdX1xeCAMJf9rdBX3nQLTntQs9v0fFbUB2eQSSOArXMuFh7MxjLWaL4+b6XMi1NDA=="
-      },
-      "StyleCop.Analyzers": {
-        "type": "Direct",
-        "requested": "[1.2.0-beta.556, )",
-        "resolved": "1.2.0-beta.556",
-        "contentHash": "llRPgmA1fhC0I0QyFLEcjvtM2239QzKr/tcnbsjArLMJxJlu0AA5G7Fft0OI30pHF3MW63Gf4aSSsjc5m82J1Q==",
-        "dependencies": {
-          "StyleCop.Analyzers.Unstable": "1.2.0.556"
-        }
-      },
       "Endjin.RecommendedPractices": {
         "type": "Transitive",
         "resolved": "2.1.15",
@@ -112,11 +97,6 @@
         "type": "Transitive",
         "resolved": "2.0.1",
         "contentHash": "Ix5VXZwLfolwVHyGTSSJl6KIJ2le6E9YjLdZBMS1Xxzw7VJankRvQW8JoUL69tEgfcw+0qjgWrlxANrhvS0QCQ=="
-      },
-      "StyleCop.Analyzers.Unstable": {
-        "type": "Transitive",
-        "resolved": "1.2.0.556",
-        "contentHash": "zvn9Mqs/ox/83cpYPignI8hJEM2A93s2HkHs8HYMOAQW0PkampyoErAiIyKxgTLqbbad29HX/shv/6LGSjPJNQ=="
       }
     }
   }
